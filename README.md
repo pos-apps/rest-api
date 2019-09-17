@@ -46,6 +46,8 @@
 <p>method yang digunakan POST, lalu pada bagian body pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai deskripsi registrasi</p>
 
 ![register](https://user-images.githubusercontent.com/43155964/65077431-1ecc4900-d9c5-11e9-8dbf-6d2474cf7a2b.png)
+![register 2](https://user-images.githubusercontent.com/43155964/65078973-67d1cc80-d9c8-11e9-97cc-db5af62ed910.png)
+
 
 <h2>Login</h2>
 <p>method yang digunakan POST, lalu pada bagian body pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai deskripsi login</p>
