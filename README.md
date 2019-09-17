@@ -39,10 +39,21 @@
 <ul>
     <li>Registrasi (POST) : <a href="http://localhost:3000/authentication/register">http://localhost:3000/authentication/register</a></li>
     <li>Login (POST) : <a href="http://localhost:3000/authentication/login">http://localhost:3000/authentication/login</a></li>
-    <li>Cek autentikasi dengan token : <a href="http://localhost:3000/authentication/cek-auth">http://localhost:3000/authentication/cek-auth</a></li>
+    <li>Cek autentikasi dengan token (GET) : <a href="http://localhost:3000/authentication/cek-auth">http://localhost:3000/authentication/cek-auth</a></li>
 </ul>
 
 <h2>Registrasi</h2>
 <p>method yang digunakan POST, lalu pada bagian body pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai deskripsi registrasi</p>
 
 ![register](https://user-images.githubusercontent.com/43155964/65077431-1ecc4900-d9c5-11e9-8dbf-6d2474cf7a2b.png)
+
+<h2>Login</h2>
+<p>method yang digunakan POST, lalu pada bagian body pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai deskripsi login</p>
+
+![login](https://user-images.githubusercontent.com/43155964/65077770-d7928800-d9c5-11e9-84dc-ba600a064a9e.png)
+
+<h2>Cek autentikasi dengan token</h2>
+<p>method yang digunakan GET. sebelumnya harus login terlebih dahulu untuk get token, lalu ke bagian header dan tambahkan key "Authorization" dengan value "Bearer [token]"</p>
+
+![cek auth](https://user-images.githubusercontent.com/43155964/65078040-6901fa00-d9c6-11e9-86d8-f2a0db0aa0a0.png)
+
