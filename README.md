@@ -4,12 +4,9 @@
 <ul>
     <li>Harus sudah terinstall node js</li>
     <li>buka terminal, lalu arahkan ke folder project</li>
-    <li>lalu ketik "node app.js"</li>
+    <li>lalu ketik "nodemon app.js"</li>
     <li>silahkan jalankan postman untuk cek API nya</li>
 </ul>
-
-<h2>Cara penggunaan postman</h2>
-<p>pilih method apakah post atau get, lalu pada bagian body, pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai API yang dipilih</p>
 
 <h2>Field untuk registrasi</h2>
 <ul>
@@ -42,4 +39,10 @@
 <ul>
     <li>Registrasi (POST) : <a href="http://localhost:3000/authentication/register">http://localhost:3000/authentication/register</a></li>
     <li>Login (POST) : <a href="http://localhost:3000/authentication/login">http://localhost:3000/authentication/login</a></li>
+    <li>Cek autentikasi dengan token : <a href="http://localhost:3000/authentication/cek-auth">http://localhost:3000/authentication/cek-auth</a></li>
 </ul>
+
+<h2>Registrasi</h2>
+<p>method yang digunakan POST, lalu pada bagian body pilih bagian x-www-form-urlencoded. lalu masukkan field sesuai deskripsi registrasi</p>
+
+![register](https://user-images.githubusercontent.com/43155964/65077431-1ecc4900-d9c5-11e9-8dbf-6d2474cf7a2b.png)

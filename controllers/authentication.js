@@ -11,9 +11,8 @@ exports.register = function(req, res) {
     var password = req.body.password;
     var passwordConfirm = req.body.passwordConfirm;
 
-    // enkripsi password dan enkripsi token dari password yang sudah di enkripsi
+    // enkripsi password 
     var encryptedPassword = crypter.encrypt(password);
-    var token = crypter.encrypt(encryptedPassword);
 
     // get data registrasi dari input form
     var data = {
@@ -32,8 +31,7 @@ exports.register = function(req, res) {
         update_date: req.body.update_date,
         type_pengguna: req.body.type_pengguna,
         username: username,
-        password: encryptedPassword,
-        token: token
+        password: encryptedPassword
     }
 
     // valdasi password dan konfirmasi password
@@ -44,9 +42,8 @@ exports.register = function(req, res) {
 
     var sql1 = 'SELECT * FROM m_pengguna WHERE username = ?';
     var sql2 = 'INSERT INTO m_pengguna SET ?';
-
     // masukkan data dan query sql ke fungsi register di bagian model 
-    auth_model.register(res, sql1, sql2, username, encryptedPassword, token, data); 
+    auth_model.register(res, sql1, sql2, username, encryptedPassword, data); 
 }
 
 // login
@@ -60,4 +57,11 @@ exports.login = function(req, res) {
     
     // masukkan data dan query sql ke fungsi register di bagian model 
     auth_model.login(sql, username, password, res);
+}
+
+// cek autentikasi menggunakan token
+exports.cekAuth = function(req, res) {
+    // get token
+    var token = req.token;
+    auth_model.cekHalaman(token, res);
 }
