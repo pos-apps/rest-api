@@ -1,8 +1,9 @@
 const koneksi = require('../config/database');
 const response = require('../libs/response');
+const jwt = require('jsonwebtoken');
+const jwt_config = require('../config/jwt-config');
 const Crypter = require('cryptr');
 const crypter = new Crypter('myTotalySecretKey'); 
-const jwt = require('jsonwebtoken');
 
 // fungsi registrasi
 exports.register = function(res, statement1, statement2, username, encryptedPassword, data) {
@@ -11,7 +12,7 @@ exports.register = function(res, statement1, statement2, username, encryptedPass
         
         // validasi jika username sudah ada
         if (rows.length > 0) {
-            response.response('Username already exists!', 'Error', res);
+            response.response('Username sudah terdaftar!', 'Error', res);
             return false;
         }
 
@@ -24,10 +25,10 @@ exports.register = function(res, statement1, statement2, username, encryptedPass
                 username: username,
                 password: encryptedPassword
             }
-            var token = jwt.sign({user}, 'generate_token', {expiresIn: '1h'}); 
+            var token = jwt.sign({user}, jwt_config.secret); 
             
             // response json, kembalikan token dan password
-            response.responseAuth('Register successfully', encryptedPassword, token, res);
+            response.responseAuth('Registrasi berhasil!', encryptedPassword, token, res);
             console.log('Sukses registrasi!');
         });
     });
@@ -41,11 +42,10 @@ exports.login = function(statement, username, password, res) {
         // pengecekan jika data input form sama dengan data di database
         if (rows.length > 0) {
             var decryptedPassword = crypter.decrypt(rows[0].password);
-            // var token = rows[0].token;
 
-            // validasi password dan konfirmasi password
+            // validasi password di database
             if (password !== decryptedPassword) {
-                response.response("Sorry, username or password incorrect!", "Error", res);
+                response.response('Username atau password salah!', 'Error', res);
                 return false;
             } else {
                 // generate token jika berhasil login
@@ -53,23 +53,37 @@ exports.login = function(statement, username, password, res) {
                     username: rows[0].username,
                     password: rows[0].password
                 }
-                var token = jwt.sign({user}, 'generate_token', {expiresIn: '1h'}); 
+                var token = jwt.sign({user}, jwt_config.secret); 
 
                 // response json, kembalikan token dan password
-                response.responseAuth("Login Successfully", rows[0].password, token, res);
+                response.responseAuth('Login berhasil!', rows[0].password, token, res);
                 console.log('Sukses login!');
             }
+        } else {
+            response.response('Username atau password salah!', 'Error', res);
+            return false;
         }
     });
 }
 
 // cek autentikasi menggunakan token
 exports.cekHalaman = function(token, res) {
-    jwt.verify(token, 'generate_token', (err, data) => {
+    jwt.verify(token, jwt_config.secret, (err, data) => {
         if (err) {
             res.sendStatus(403);
         } else {
             response.response(data, 'Success', res);
         }
     });
+}
+
+// logout
+exports.logout = function(token, res) {
+    jwt.verify(token, jwt_config.secret, (err, data) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            response.response('Sukses logout', true, res);
+        }
+    })
 }

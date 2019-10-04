@@ -12,4 +12,7 @@ router.post('/authentication/login', authentication.login);
 // routing cek token
 router.get('/authentication/cek-auth', verify_token.verifyToken, authentication.cekAuth);
 
+// routing logout
+router.post('/authentication/logout', verify_token.verifyToken, authentication.logout);
+
 module.exports = router;

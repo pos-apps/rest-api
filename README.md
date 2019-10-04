@@ -24,6 +24,7 @@
     <li>create_date (datetime)</li>
     <li>update_date (datetime)</li>
     <li>type_pengguna (int 1)</li>
+    <li>parent (int 11)</li>
     <li>username (varchar 100)</li>
     <li>password (varchar 255)</li>
     <li>passwordConfirm</li>
@@ -40,6 +41,8 @@
     <li>Registrasi (POST) : <a href="http://localhost:3000/authentication/register">http://localhost:3000/authentication/register</a></li>
     <li>Login (POST) : <a href="http://localhost:3000/authentication/login">http://localhost:3000/authentication/login</a></li>
     <li>Cek autentikasi dengan token (GET) : <a href="http://localhost:3000/authentication/cek-auth">http://localhost:3000/authentication/cek-auth</a></li>
+    <li>Logout (POST) : <a href="http://localhost:3000/authentication/logout">http://localhost:3000/authentication/logout</a></li>
+    
 </ul>
 
 <h2>Registrasi</h2>
@@ -59,3 +62,7 @@
 
 ![cek auth](https://user-images.githubusercontent.com/43155964/65078040-6901fa00-d9c6-11e9-86d8-f2a0db0aa0a0.png)
 
+<h2>Logout</h2>
+<p>method yang digunakan POST. sebelumnya harus login terlebih dahulu untuk dapatkan tokennya, lalu ke bagian header dan tambahkan key "Authorization" dengan value "Bearer [token]"</p>
+
+![Logout](https://user-images.githubusercontent.com/43155964/66215563-01e68400-e6ee-11e9-9e92-775acfcea5f3.png)

@@ -5,8 +5,7 @@ const crypter = new Crypter('myTotalySecretKey');
 
 // registrasi
 exports.register = function(req, res) {
-    // get data dari input form, gunakan x-www-form-urlencoded di bagian body pada app postman.
-    // jangan pakai form-data
+    // get username dan password
     var username = req.body.username;
     var password = req.body.password;
     var passwordConfirm = req.body.passwordConfirm;
@@ -30,13 +29,41 @@ exports.register = function(req, res) {
         create_date: req.body.create_date,
         update_date: req.body.update_date,
         type_pengguna: req.body.type_pengguna,
+        parent: req.body.parent,
         username: username,
         password: encryptedPassword
     }
 
     // valdasi password dan konfirmasi password
     if (password !== passwordConfirm) {
-        response.response("Password dan password confirmation is not match!", 'Error', res);
+        response.response('Password dan password confirmation is not match!', 'Error', res);
+        return false;
+    }
+
+    // validasi field kosong
+    if (data.nama_lengkap == '') {
+        response.response('Nama lengkap wajib diisi!', 'Error', res);
+        return false;
+    } else if(data.nik == '') {
+        response.response('NIK wajib diisi!', 'Error', res);
+        return false;
+    } else if (data.tempat_lahir == '') {
+        response.response('Tempat lahir wajib diisi!', 'Error', res);
+        return false;
+    } else if (data.alamat == '') {
+        response.response('Alamat wajib diisi!', 'Error', res);
+        return false;
+    } else if (data.status_perkawinan == '') {
+        response.response('Status perkawinan wajib diisi!', 'Error', res);
+        return false;
+    } else if (data.kewarganegaraan == '') {
+        response.response('Kewarganegaraan wajib diisi!', 'Error', res);
+        return false;
+    } else if (data.username == '') {
+        response.response('Username wajib diisi!', 'Error', res);
+        return false;
+    } else if (password == '') {
+        response.response('Password wajib diisi!', 'Error', res);
         return false;
     }
 
@@ -48,11 +75,18 @@ exports.register = function(req, res) {
 
 // login
 exports.login = function(req, res) {
-    // get data dari input form, gunakan x-www-form-urlencoded di bagian body pada app postman.
-    // jangan pakai form-data
+    // get username dan password
     var username = req.body.username;
     var password = req.body.password;
 
+    // validasi field kosong
+    if (username == '') {
+        response.response('Username wajib diisi!', 'Error', res);
+        return false;
+    } else if (password == '') {
+        response.response('Password wajib diisi!', 'Error', res);
+        return false;
+    }
     var sql = 'SELECT * FROM m_pengguna WHERE username = ?';
     
     // masukkan data dan query sql ke fungsi register di bagian model 
@@ -64,4 +98,10 @@ exports.cekAuth = function(req, res) {
     // get token
     var token = req.token;
     auth_model.cekHalaman(token, res);
+}
+
+// logout
+exports.logout = function(req, res) {
+    var token = req.token;
+    auth_model.logout(token, res);
 }
