@@ -63,6 +63,6 @@
 ![cek auth](https://user-images.githubusercontent.com/43155964/65078040-6901fa00-d9c6-11e9-86d8-f2a0db0aa0a0.png)
 
 <h2>Logout</h2>
-<p>method yang digunakan POST. sebelumnya harus login terlebih dahulu untuk dapatkan tokennya, lalu ke bagian header dan tambahkan key "Authorization" dengan value "Bearer [token]"</p>
+<p>method yang digunakan POST. sebelumnya harus login terlebih dahulu untuk dapatkan tokennya, lalu ke bagian header dan tambahkan key "Authorization" dengan value "Bearer [token]". untuk responnya, jika status true maka logout berhasil. jika token invalid, akan muncul response forbidden.</p>
 
 ![Logout](https://user-images.githubusercontent.com/43155964/66215563-01e68400-e6ee-11e9-9e92-775acfcea5f3.png)
