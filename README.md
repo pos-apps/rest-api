@@ -1,14 +1,7 @@
-# PortalDesa
-Merupakan aplikasi pemberitaan dari Desa Netpala yang ada di Nusa Tenggara Timur.
+# Point Of Sale (POS)
+Merupakan aplikasi jual beli antara supplier dan toko beserta customernya. Khusus untuk repository ini adalah untuk REST-API
 
 ## Deskripsi Fitur
-Aplikasi ini dibangun dengan fitur sebagai berikut:
-1. Landing Page
-2. Dashboard
-3. Manajemen Berita
-4. Manajemen Halaman
-5. Manajemen Menu
-6. Manajemen Pengguna
 
 ## Deskripsi Teknologi
 Aplikasi ini dibangun dengan mengggunakan:
@@ -18,4 +11,4 @@ Aplikasi ini dibangun dengan mengggunakan:
 4. HMVC
 
 ## Copyright
-Aplikasi ini dikhususkan untuk desa netpala, jika terdapat duplikasi dan publikasi yang tidak melalui izin pemerintah setempat, maka akan dikenakan sanksi hukum.
+Copyright Chevalier Lab 2020
